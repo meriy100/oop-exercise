@@ -25,3 +25,4 @@ RUN apk upgrade --no-cache && \
 
 COPY . /oop
 
+CMD ["bundle", "exec", "rails", "s"]

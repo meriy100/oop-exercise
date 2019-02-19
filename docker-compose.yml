@@ -1,0 +1,26 @@
+version: '2.1'
+services:
+  app:
+    stdin_open: true
+    build: .
+    environment:
+      DB_HOST_NAME: mysql
+    volumes:
+      - .:/oop
+      - bundle:/bundle
+    ports:
+      - 3000:3000
+    links:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 3307:3306
+    restart: on-failure
+    environment:
+      MYSQL_DATABASE: oop_development
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  bundle:
+    driver: local
